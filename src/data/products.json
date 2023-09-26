@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Nombre del producto 1",
+    "description": "Descripción del producto 1",
+    "code": "Código del producto 1",
+    "price": 100,
+    "status": true,
+    "stock": 10,
+    "category": "Categoría del producto 1",
+    "thumbnails": [
+      "ruta1.jpg",
+      "ruta2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Nombre del producto 2",
+    "description": "Descripción del producto 2",
+    "code": "Código del producto 2",
+    "price": 75.5,
+    "status": true,
+    "stock": 20,
+    "category": "Categoría del producto 2",
+    "thumbnails": [
+      "ruta3.jpg",
+      "ruta4.jpg"
+    ]
+  },
+  {
+    "title": "Camisa",
+    "description": "rojo",
+    "code": "CND2345",
+    "price": 100,
+    "status": true,
+    "stock": 10,
+    "category": "verano",
+    "thumbnails": [
+      "ruta1.jpg",
+      "ruta2.jpg"
+    ]
+  }
+]
