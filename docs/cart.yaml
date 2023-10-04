@@ -1,0 +1,179 @@
+paths:
+  /api/carts:
+    post:
+      summary: Crear un nuevo carrito
+      tags:
+        - Carrito
+      responses:
+        '201':
+          description: Carrito creado con éxito
+        '500':
+          description: Error al crear el carrito
+
+  /api/carts/{cid}:
+    get:
+      summary: Obtener detalles de un carrito a partir de su ID
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que se quiere obtener
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Carrito obtenidos exitosamente
+        '404':
+          description: Carrito no encontrado
+
+    put:
+      summary: Actualizar un carrito a partir de su ID
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que se quiere actualizar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Carrito actualizado exitosamente
+        '404':
+          description: Carrito no encontrado
+
+    delete:
+      summary: Eliminar todos los productos de un carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que se quiere vaciar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Contenido del carrito eliminado exitosamente
+        '404':
+          description: Error al vaciar el carrito
+
+  /api/carts/{cid}/products/{pid}:
+    post:
+      summary: Agregar un producto a un carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito al que se quiere agregar el producto
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que se quiere agregar al carrito
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Producto agregado al carrito 
+        '400':
+          description: No se pudo agregar el producto al carrito
+
+    delete:
+      summary: Eliminar un producto de un carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito del que se quiere eliminar el producto
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que se quiere eliminar del carrito indicado
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Producto eliminado del carrito 
+        '404':
+          description: Carrito o producto no encontrado
+
+    put:
+      summary: Actualizar la cantidad de un producto en un carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito en donde se encuentra el producto a actualizar
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto en el carrito que se quiere modificar la cantidad
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: number
+        responses:
+          '200':
+            description: Cantidad del producto en el carrito actualizada exitosamente
+          '400':
+            description: No se pudo actualizar la cantidad del producto en el carrito
+
+  /api/carts/{cid}/purchase:
+    post:
+      summary: Realizar la compra de un carrito
+      tags:
+        - Carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que se quiere comprar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Compra realizada exitosamente
+        '400':
+          description: No se pudo realizar la compra del carrito
+
+components:
+  schemas:
+    ProductoEnCarrito:
+      type: object
+      properties:
+        product:
+          type: string
+        quantity:
+          type: number
+          minimum: 1
+
+    Carrito:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductoEnCarrito'

@@ -1,0 +1,147 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtener lista de productos
+      tags:
+        - Productos
+      responses:
+        '200':
+          description: Lista de productos obtenida exitosamente
+        '500':
+          description: Error al obtener los productos
+
+    post:
+      summary: Crear un nuevo producto
+      tags:
+        - Productos
+      description: Esto operacion requiere autenticación.   
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Productos'
+      responses:
+        '201':
+          description: Producto creado exitosamente
+        '500':
+          description: Error al crear el producto
+
+
+  /api/products/{pid}:
+    get:
+      summary: Obtener detalles de un producto a partir de su ID
+      tags:
+        - Productos
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se desea obtener su detalle
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Detalles del producto obtenidos exitosamente
+        '500':
+          description: Error al obtener el producto
+
+    put:
+      summary: Actualizar un producto a partir de su ID
+      tags:
+        - Productos
+      description: Esto operacion requiere autenticación.   
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se quiere actualizar
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Productos'
+      responses:
+        '200':
+          description: Producto actualizado exitosamente
+        '400':
+          description: No se pudo actualizar el producto
+
+    delete:
+      summary: Eliminar un producto a partir de su ID
+      tags:
+        - Productos
+      description: Esto operacion requiere autenticación. 
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se desea eliminar del catalogo
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Producto eliminado con éxito
+        '500':
+          description: Error al eliminar el producto
+
+  /api/products/mockingproducts:
+    get:
+      summary: Generar productos de ejemplo
+      tags:
+        - Productos
+      description: 
+        Esta operación genera una lista de productos de ejemplo para propósitos de prueba y desarrollo.
+      responses:
+        '200':
+          description: Lista de productos de ejemplo generados exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  payload:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Productos'
+
+        '400':
+          description: No se pudo generar la lista de productos de ejemplo
+
+components:
+  schemas:
+    Productos:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        price:
+          type: number
+        status:
+          type: boolean
+        stock:
+          type: number
+        category:
+          type: string
+        thumbnails: 
+          type: string
+        owner:
+          type: string
+      required:
+        - title
+        - description
+        - code
+        - price
+        - status
+        - stock
+        - category
+        - thumbnails
