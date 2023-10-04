@@ -1,0 +1,139 @@
+:root {
+    --primario: #2c3e50;
+    --primarioOscuro: #233140;
+    --secundario: #e74c3c;
+    --secundarioOscuro: #c0392b;
+    --blanco: #FFF;
+    --negro: #000;
+    --fuentePrincipal: 'Staatliches', cursive;
+}
+
+body {
+    background-color: var(--blanco);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 1.8rem;
+    font-family: 'Arial', sans-serif;
+    color: var(--negro);
+}
+
+a {
+    text-decoration: none;
+    color: var(--secundario);
+}
+
+
+/* Estilos para los productos */
+.producto {
+    background-color: var(--blanco);
+    padding: 2rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.producto__imagen {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    height: 60%;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.producto__informacion {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+
+.producto__nombre {
+    font-size: 2.5rem;
+}
+
+.producto__precio {
+    font-size: 2rem;
+    color: var(--secundario);
+}
+
+/* Estilos para el formulario */
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.formulario__campo {
+    border: 1px solid var(--primarioOscuro);
+    background-color: var(--blanco);
+    color: var(--negro);
+    font-size: 1.6rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.formulario__submit {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    font-size: 1.8rem;
+    font-family: var(--fuentePrincipal);
+    padding: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color .3s ease;
+}
+
+.formulario__submit:hover {
+    cursor: pointer;
+    background-color: var(--secundarioOscuro);
+}
+
+.formulario__login {
+    background-color: var(--blanco);
+    width: min(60rem, 100%);
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Estilos para la sección de carrito de compras */
+.product-item {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid var(--primarioOscuro);
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
+.image-container {
+    width: 20rem;
+    height: 18rem; 
+    overflow: hidden; 
+    border-radius: 0.5rem;
+}
+
+.product-details {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.remove-button {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 0.5rem;
+}
+
+.remove-button:hover {
+    background-color: var(--secundarioOscuro);
+}

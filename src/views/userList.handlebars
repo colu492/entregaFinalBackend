@@ -1,0 +1,107 @@
+<h1>Lista de Usuarios</h1>
+  <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td>{{this.first_name}} {{this.last_name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.role}}</td>
+                <td>
+                <select id="roleSelect-{{this._id}}">
+                    <option value="user">User</option>
+                    <option value="premium">Premium</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button onclick="changeRole('{{this._id}}')">Cambiar Rol</button>
+                <button onclick="deleteUser('{{this._id}}')">Eliminar</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <button onclick="deleteInavtiveUsers()">Eliminar Inactivos</button>
+
+
+ <script>
+    function changeRole(userId) {
+        console.log('UserId handlebars:', userId)
+        const newRole = document.getElementById(`roleSelect-${userId}`).value;
+        console.log(newRole)
+
+        const requestUrl = `/api/users/manualChangeRole/${userId}`;
+        console.log('Solicitud URL:', requestUrl);
+
+        fetch(requestUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ newRole })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Rol cambiado con éxito');
+                location.reload(); 
+            } else {
+                alert('Error al cambiar el rol');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al cambiar el rol');
+        });
+    }
+
+    function deleteUser(userId) {
+        fetch(`/api/users/manualDeleteUser/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Usuario eliminado con éxito');
+                location.reload(); 
+            } else {
+                alert('Error al eliminar el usuario');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al eliminar el usuario');
+        });
+    }
+
+    function deleteInavtiveUsers() {
+        fetch('/api/users/', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+            location.reload(); 
+        } else {
+            alert('Error al eliminar usuarios inactivos');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al eliminar usuarios inactivos');
+    });    
+    }
+</script>

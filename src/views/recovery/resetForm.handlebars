@@ -1,0 +1,14 @@
+    <h1>Restablecer Contraseña</h1>
+    <form action="/api/recover-password/reset/{{token}}" method="post">
+        <label for="password">Contraseña Nueva:</label>
+        <input type="password" name="newPassword" required>
+        <label for="confirmPassword">Confirmar Contraseña Nueva:</label>
+        <input type="password" name="confirmNewPassword" required>
+        {{#if passwordInc}}
+            <p>Las contraseñas no coinciden</p>
+        {{/if}}
+        {{#if newPasswordMatch}}
+            <p>La nueva contraseña no puede ser igual a la contraseña actual, Por favor ingrese una contraseña diferente</p>
+        {{/if}}
+        <button type="submit">Restablecer Contraseña</button>
+    </form>

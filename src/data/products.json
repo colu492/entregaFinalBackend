@@ -39,5 +39,57 @@
       "ruta1.jpg",
       "ruta2.jpg"
     ]
+  },
+  {
+    "title": "Camisa",
+    "description": "rojo",
+    "code": "CND2345",
+    "price": 100,
+    "status": true,
+    "stock": 10,
+    "category": "verano",
+    "thumbnails": [
+      "ruta1.jpg",
+      "ruta2.jpg"
+    ]
+  },
+  {
+    "title": "Camisa",
+    "description": "verde",
+    "code": "CND2345",
+    "price": 100,
+    "status": true,
+    "stock": 10,
+    "category": "verano",
+    "thumbnails": [
+      "ruta1.jpg",
+      "ruta2.jpg"
+    ]
+  },
+  {
+    "title": "pantalon",
+    "description": "verde",
+    "code": "CND2245",
+    "price": 110,
+    "status": true,
+    "stock": 10,
+    "category": "invierno",
+    "thumbnails": [
+      "ruta4.jpg",
+      "ruta7.jpg"
+    ]
+  },
+  {
+    "title": "pantalon",
+    "description": "verde",
+    "code": "CND2245",
+    "price": 110,
+    "status": true,
+    "stock": 10,
+    "category": "invierno",
+    "thumbnails": [
+      "ruta4.jpg",
+      "ruta7.jpg"
+    ]
   }
 ]

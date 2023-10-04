@@ -1,0 +1,18 @@
+<h1>Información de la Cuenta</h1>
+    <h2>Nombre de Usuario: {{user.first_name}} {{user.last_name}}</h2>
+    <h2>Rol: {{user.role}}</h2>
+
+    <h2>Subir Documentos</h2>
+    <form action="/api/users/{{user._id}}/documents" method="POST" enctype="multipart/form-data">
+        <label for="Perfil">Imagen de perfil:</label>
+        <input type="file" name="profileImage"  id="Perfil"><br>
+        <label for="Producto">Imagen de producto:</label>
+        <input type="file" name="productImage" multiple id="Producto"><br>
+        <label for="Identificacion">Identificación</label>
+        <input type="file" name="identificacion"  id="Identificacion"><br>
+        <label for="Domicilio">Comprobante de Domicilio:</label>
+        <input type="file" name="domicilio"  id="Domicilio"><br>
+        <label for="Estado">Comprobante de Estado de Cuenta:</label>
+        <input type="file" name="compruebaCuenta"  id="Estado"><br>
+        <input type="submit" value="Subir Documentos">
+    </form>

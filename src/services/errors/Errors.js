@@ -1,0 +1,9 @@
+const Errors = {
+    GET_PRODUCTS_ERROR:1,
+    PRODUCT_NOT_FOUND:2,
+    ADD_PRODUCT_ERROR:3,
+    UPDATE_PRODUCT_ERROR:4,
+    DELETE_PRODUCT_ERROR:5
+}
+
+export default Errors;
